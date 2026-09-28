@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple Calculator</title>
+    </head>
+
+    <body>
+
+        <button onclick="addNumber(1)">1</button>
+        <button onclick="addNumber(2)">2</button>
+        <button onclick="addNumber(3)">3</button>
+        <br>
+        <button onclick="addNumber(4)">4</button>
+        <button onclick="addNumber(5)">5</button>
+        <button onclick="addNumber(6)">6</button>
+        <br>
+        <button onclick="addNumber(7)">7</button>
+        <button onclick="addNumber(8)">8</button>
+        <button onclick="addNumber(9)">9</button>
+        <br>
+        <button onclick="addNumber(0)">0</button>
+
+
+        <button onclick="operator = '+'">+</button>
+        <button onclick="operator = '-'">-</button>
+        <br>
+        <button onclick="operator = '*'">*</button>
+        <button onclick="operator = '/'">/</button>
+
+        <button onclick="calculate()">=</button>
+        <br>
+        <button onclick="clearCalculator()">Clear</button>
+
+        <p id="paragraph"></p>
+
+        <script>
+
+            let firstNumber = '';
+            let secondNumber = '';
+            let operator = '';
+
+            function addNumber(number) {
+
+                if (operator == '') {
+                    firstNumber = firstNumber + number;
+                } 
+                else {
+                    secondNumber = secondNumber + number;
+                }
+
+                document.getElementById('paragraph').innerHTML =
+                    firstNumber + ' ' + operator + ' ' + secondNumber;
+            }
+
+            function calculate() {
+
+                let answer = 0;
+
+                if (operator == '+') {
+                    answer = Number(firstNumber) + Number(secondNumber);
+                }
+
+                if (operator == '-') {
+                    answer = Number(firstNumber) - Number(secondNumber);
+                }
+
+                if (operator == '*') {
+                    answer = Number(firstNumber) * Number(secondNumber);
+                }
+
+                if (operator == '/') {
+                    answer = Number(firstNumber) / Number(secondNumber);
+                }
+
+                document.getElementById('paragraph').innerHTML =
+                    firstNumber + ' ' + operator + ' ' + secondNumber + ' = ' + answer;
+            }
+
+            function clearCalculator() {
+
+                firstNumber = '';
+                secondNumber = '';
+                operator = '';
+
+                document.getElementById('paragraph').innerHTML = '';
+            }
+
+        </script>
+
+    </body>
+</html>
